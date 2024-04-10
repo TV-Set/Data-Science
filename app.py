@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from processing import predict
 
 app = Flask(__name__)
 @app.route("/", methods=["get", "post"]) # 127.0.0.1:5000 + "/" = 127.0.0.1:5000/
