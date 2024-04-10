@@ -2,12 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Пример приложения</title>
+    <title>Аттестационное задание</title>
 </head>
 <body>
-    <h1>Заголовок первого уровня</h1>
-    <h2>Заголовок первого уровня</h2>
-    <p>Текст</p>
+    <h1>Аттестационное задание</h1>
+    <p>
+    <h2>Введите в нижерасположенные поля параметры для расчёта соотношения "матрица-наполнитель":</h2>
+    <p>
+        {% if message %}
+        {{message}}
+        {% endif %}
+    </p>
+    <form action="" method="post">
+        <p>
+            <label>Плотность, кг/м3:</label>
+            <input type="text" name="density">
+        </p>
+        <p>
+            <input type="submit">
+        <p>
+    </form>
 
 </body>
 </html>
