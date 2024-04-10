@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 @app.route("/")
 
 def print_hello():
-    return "<h1>Hello!</h1>"  # Заголовок первого уровня
+    return render_template("index.html")
 
 app.run()
