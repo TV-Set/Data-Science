@@ -16,12 +16,59 @@
     <form action="" method="post">
         <p>
             <label>Плотность, кг/м3:</label>
-            <input type="text" name="density">
+            <input type="text" name="density_1">
         </p>
         <p>
-            <input type="submit">
+            <label>Модуль упругости, ГПа:</label>
+            <input type="text" name="module_1">
+        </p>
+        <p>
+            <label>Количество отвердителя, %:</label>
+            <input type="text" name="amount">
+        </p>
+        <p>
+            <label>Содержание эпоксидных групп, %:</label>
+            <input type="text" name="epoxy">
+        </p>
+        <p>
+            <label>Температура вспышки, град. C:</label>
+            <input type="text" name="temp">
+        </p>
+        <p>
+            <label>Поверхностная плотность, г/м2:</label>
+            <input type="text" name="density_2">
+        </p>
+        <p>
+            <label>Модуль упругости при растяжении, ГПа:</label>
+            <input type="text" name="module_2">
+        </p>
+        <p>
+            <label>Прочность при растяжении, МПа:</label>
+            <input type="text" name="hard">
+        </p>
+        <p>
+            <label>Потребление смолы, г/м2:</label>
+            <input type="text" name="resin">
+        </p>
+        <p>
+            <label>Шаг нашивки:</label>
+            <input type="text" name="pitch">
+        </p>
+        <p>
+            <label>Плотность нашивки:</label>
+            <input type="text" name="patch">
+        </p>
+        <p>
+             <label>Угол нашивки, 90 град.:</label><br/>
+        <select name="angle" id = angle_select>
+            <option value="">--Please choose an option--</option>
+            <option value="Да">Да</option>
+            <option value="Нет">Нет</option>
+        </select>
+        </p>
+        <p>
+        <input type="submit">
         </p>
     </form>
-
 </body>
 </html>

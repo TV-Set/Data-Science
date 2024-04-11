@@ -7,12 +7,33 @@ app = Flask(__name__)
 def index(): # Данная функция вызывается с помощью декоратора "@app.route()"
     message = "Ничего не введено"
     if request.method == "POST":
-        density = request.form.get("density")
+        density_1 = request.form.get("density_1")
+        module_1 = request.form.get("module_1")
+        amount = request.form.get("amount")
+        epoxy = request.form.get("epoxy")
+        temp = request.form.get("temp")
+        density_2 = request.form.get("density_2")
+        module_2 = request.form.get("module_2")
+        hard = request.form.get("hard")
+        resin = request.form.get("resin")
+        pitch = request.form.get("pitch")
+        patch = request.form.get("patch")
+        angle = request.form.get("angle")
         try:
-            density = float(density)
-            message = f"Вы ввели: {density}"
+            density_1 = float(density_1)
+            module_1 = float(module_1)
+            amount = float(amount)
+            epoxy = float(epoxy)
+            temp = float(temp)
+            density_2 = float(density_2)
+            module_2 = float(module_2)
+            hard = float(hard)
+            resin = float(resin)
+            pitch = float(pitch)
+            patch = float(patch)
+            message = f"Вы ввели: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}, {angle}"
         except:
-            message = f"Вы ввели некорректное значение: {density}"
+            message = f"Вы ввели некорректное значение: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}"
 
     return render_template("index.html", message=message)
 
