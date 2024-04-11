@@ -31,10 +31,11 @@ def index(): # Данная функция вызывается с помощь�
             resin = float(resin)
             pitch = float(pitch)
             patch = float(patch)
+            density = predict(density)
             message = f"Вы ввели: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}, {angle}"
         except:
             message = f"Вы ввели некорректное значение: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}"
 
     return render_template("index.html", message=message)
 
-app.run()
+# app.run()

@@ -28,6 +28,7 @@ Flask==3.0.2
 fonttools==4.47.2
 fqdn==1.5.1
 fuzzy-c-means==1.7.2
+gunicorn==21.2.0
 h5py==3.10.0
 idna==3.6
 ipykernel==6.29.0
