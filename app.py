@@ -4,7 +4,7 @@ from processing import predict, load_models
 app = Flask(__name__)
 @app.route("/", methods=["get", "post"]) # 127.0.0.1:5000 + "/" = 127.0.0.1:5000/
 
-def main(): # Данная функция вызывается с помощью декоратора "@app.route()"
+def index(): # Данная функция вызывается с помощью декоратора "@app.route()"
     model, scaler_x, scaler_y = load_models()
     message = "Ничего не введено"
     if request.method == "POST":
@@ -32,11 +32,12 @@ def main(): # Данная функция вызывается с помощью
             resin = float(resin)
             pitch = float(pitch)
             patch = float(patch)
-            density_1, module_1, amount, epoxy, temp, density_2, module_2, hard, resin, pitch, patch = scaler_x.transform([[density_1], [module_1], [amount], [epoxy], [temp], [density_2], [module_2], [hard], [resin], [pitch], [patch], [angle]])
-            result = predict(density, model)
-            message = f'Соотношение "матрица-наполнитель": {density}'
+            angle = float(angle)
+            density = predict(scaler_x.transform([[density_1], [module_1], [amount], [epoxy], [temp], [density_2], [module_2], [hard], [resin], [pitch], [patch], [angle]]), model)
+            result = scaler_y.inverse_transform([density])
+            message = f'Соотношение "матрица-наполнитель": {result}'
         except:
-            message = f"Вы ввели некорректное значение: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}"
+            message = f"Вы ввели некорректное значение: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}, {angle}"
 
     return render_template("index.html", message=message)
 
