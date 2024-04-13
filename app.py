@@ -32,7 +32,7 @@ def main(): # Данная функция вызывается с помощью
             resin = float(resin)
             pitch = float(pitch)
             patch = float(patch)
-            density_1, module_1, amount, epoxy, temp, density_2, module_2, hard, resin, pitch, patch = scaler_x.transform([[density_1], [module_1], [amount], [epoxy], [temp], [density_2], [module_2], [hard], [resin], [pitch], [patch]])
+            density_1, module_1, amount, epoxy, temp, density_2, module_2, hard, resin, pitch, patch = scaler_x.transform([[density_1], [module_1], [amount], [epoxy], [temp], [density_2], [module_2], [hard], [resin], [pitch], [patch], [angle]])
             result = predict(density, model)
             message = f'Соотношение "матрица-наполнитель": {density}'
         except:
