@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
-from processing import predict
+from processing import predict, load_models
 
 app = Flask(__name__)
 @app.route("/", methods=["get", "post"]) # 127.0.0.1:5000 + "/" = 127.0.0.1:5000/
 
-def index(): # Данная функция вызывается с помощью декоратора "@app.route()"
+def main(): # Данная функция вызывается с помощью декоратора "@app.route()"
+    model, scaler_x, scaler_y = load_models()
     message = "Ничего не введено"
     if request.method == "POST":
         density_1 = request.form.get("density_1")
@@ -31,11 +32,12 @@ def index(): # Данная функция вызывается с помощь�
             resin = float(resin)
             pitch = float(pitch)
             patch = float(patch)
-            density = predict(density)
-            message = f"Вы ввели: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}, {angle}"
+            density_1, module_1, amount, epoxy, temp, density_2, module_2, hard, resin, pitch, patch = scaler_x.transform([[density_1], [module_1], [amount], [epoxy], [temp], [density_2], [module_2], [hard], [resin], [pitch], [patch]])
+            result = predict(density, model)
+            message = f'Соотношение "матрица-наполнитель": {density}'
         except:
             message = f"Вы ввели некорректное значение: {density_1}, {module_1}, {amount}, {epoxy}, {temp}, {density_2}, {module_2}, {hard}, {resin}, {pitch}, {patch}"
 
     return render_template("index.html", message=message)
 
-# app.run()
+app.run()
